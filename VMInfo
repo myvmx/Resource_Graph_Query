@@ -1,0 +1,4 @@
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines'
+| extend licenseType = tostring(properties.['licenseType'])
+| project name, resourceGroup, properties.extended.instanceView.osName, properties.extended.instanceView.osVersion, properties.hardwareProfile.vmSize, subscriptionId, licenseType, tags
